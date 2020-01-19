@@ -23,10 +23,16 @@ class DicePage extends StatefulWidget {
 }
 
 class _DicePageState extends State<DicePage> {
-  List<int> diceArry = [1, 2, 3, 4, 5, 6];
   int randomValue = 1;
   int randomValue2 = 1;
-  final _random = new Random();
+
+  void getRandom() {
+    setState(() {
+      randomValue = Random().nextInt(6) + 1;
+      randomValue2 = Random().nextInt(6) + 1;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -38,10 +44,7 @@ class _DicePageState extends State<DicePage> {
                 image: AssetImage('images/dice$randomValue.png'),
               ),
               onPressed: () {
-                setState(() {
-                  
-                  randomValue = diceArry[_random.nextInt(diceArry.length)];
-                });
+                getRandom();
               },
             ),
           ),
@@ -51,10 +54,7 @@ class _DicePageState extends State<DicePage> {
                 image: AssetImage('images/dice$randomValue2.png'),
               ),
               onPressed: () {
-                setState(() {
-                  
-                  randomValue2 = diceArry[_random.nextInt(diceArry.length)];
-                });
+                getRandom();
               },
             ),
           ),
